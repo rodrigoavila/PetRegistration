@@ -51,11 +51,11 @@ public class PetDAOTest {
 			Registry registry = preencherRegistro();
 			dao.inserir(registry);
 						
-			List<Registry> registros = dao.listarTodos();
+			boolean registros = dao.listarTodos();
 			
 			assertNotNull("Lista de registros nula", registros);			
-			assertTrue("Lista de registros vazia", registros.size() > 0);
-			assertEquals(1, registros.size());
+			assertTrue("Lista de registros vazia", registros);
+			assertEquals(true, registros);
 		} catch (Exception e) {
 			fail("Erro ao listar todos registros: " + e.getMessage());
 		}

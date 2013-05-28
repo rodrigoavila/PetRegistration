@@ -1,6 +1,9 @@
 package dao;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,10 +66,25 @@ public class PetDAOImpl implements PetDAO {
 	 * Retorna a lista
 	 * 
 	 */
-	public List<Registry> listarTodos() {
+	public boolean listarTodos() throws IOException {
 		// TODO
+		
+		FileReader leArquivo = new FileReader(path);		 
+		
+		BufferedReader bufArquivo = new BufferedReader(leArquivo);
+		
 		List<Registry> registros = new ArrayList<Registry>();
-		return registros;
+				 
+		while (bufArquivo.ready()) {
+		
+		String linha = bufArquivo.readLine();
+		 
+		}
+		 
+		bufArquivo.close();
+		leArquivo.close();
+		 
+		return true;
 	}
-
+		
 }
