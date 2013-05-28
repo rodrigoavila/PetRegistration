@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Registry;
@@ -63,8 +64,9 @@ public class PetDAOImpl implements PetDAO {
 	 * 
 	 */
 	public List<Registry> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO
+		List<Registry> registros = new ArrayList<Registry>();
+		return registros;
 	}
 
 }
