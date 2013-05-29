@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +40,7 @@ public class PetDAOTest {
 		
 		try {
 			Boolean resultado = dao.inserir(registry);
-			assertTrue("Registro não inserido", resultado);		
+			assertTrue("Registro nï¿½o inserido", resultado);		
 		} catch (Exception e) {
 			fail("Erro ao inserir registro: " + e.getMessage());
 		}
@@ -48,14 +49,23 @@ public class PetDAOTest {
 	@Test
 	public void listarTodos() {
 		try {
-			Registry registry = preencherRegistro();
-			dao.inserir(registry);
+			Registry r1 = preencherRegistro();
+			Registry r2 = preencherRegistro();
+			Registry r3 = preencherRegistro();
+			Registry r4 = preencherRegistro();
+			Registry r5 = preencherRegistro();	
+			
+			dao.inserir(r1);
+			dao.inserir(r2);
+			dao.inserir(r3);
+			dao.inserir(r4);
+			dao.inserir(r5);
 						
-			boolean registros = dao.listarTodos();
+			List<Registry> registros = dao.listarTodos();
 			
 			assertNotNull("Lista de registros nula", registros);			
-			assertTrue("Lista de registros vazia", registros);
-			assertEquals(true, registros);
+			assertTrue("Lista de registros vazia", registros.size() > 0);
+			assertEquals(5, registros.size());
 		} catch (Exception e) {
 			fail("Erro ao listar todos registros: " + e.getMessage());
 		}
@@ -65,9 +75,9 @@ public class PetDAOTest {
 		Registry registry = new Registry();
 		registry.setTipoPet("cachorro");
 		registry.setNomeDono("Fulano de Tal");
-		registry.setNomePet("Toto");
+		registry.setNomePet("Toto " + new Random().nextInt());
 		registry.setRaca("Tchumba");
-		registry.setEndereco("227 Shippen St. #2, Weehawken, NJ");
+		registry.setEndereco("227 Shippen St. #2 Weehawken NJ");
 		registry.setTelefone("+1-201-580-1213");
 		
 		BigDecimal valor = new BigDecimal("100.50");
