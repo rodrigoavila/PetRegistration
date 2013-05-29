@@ -44,15 +44,24 @@ public class PetDAOImpl implements PetDAO {
 					   registry.getValorServico() + "," +
 					   registry.getDataRegistro();
 		
+		String linha1 = registry.getTipoPet() + "," + 
+				   registry.getNomeDono() + "," + 
+				   registry.getNomePet() + "," +
+				   registry.getRaca() + "," +
+				   registry.getEndereco() + "," +
+				   registry.getTelefone() + "," +
+				   registry.getValorServico() + "," +
+				   registry.getDataRegistro();
+		
 		File file = new File(path);
 		if ( !file.exists() ) {
 			file.createNewFile();
 		}
 		
 		FileWriter writer = new FileWriter(file.getAbsolutePath());
-		writer.write(linha);
+		writer.write(linha+"\n"+linha1);
 		writer.close();
-			
+		
 		return true;
 	}
 
